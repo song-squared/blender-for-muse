@@ -1,60 +1,60 @@
 # QUICKSTART
 
-两种入门方式：👶 小白模式（全程动嘴）或 🛠️ 手动模式（三步自己跑）。
+[English](QUICKSTART.md) | [中文](QUICKSTART.zh-CN.md)
+
 Two ways in: 👶 Beginner Mode (just talk) or 🛠️ Manual Mode (run it yourself).
 
 ---
 
-## 👶 小白模式：全程动嘴，不用装任何东西
+## 👶 Beginner Mode: just talk, install nothing
 
-### 第 1 步：让 Muse 查项目
+### Step 1: Ask Muse to look up the project
 
-跟 Muse 说（复制这句就行）：
+Tell Muse (copy-paste works):
 
-> 帮我查一下开源项目 **blender-for-muse**
+> Check out the open-source project **blender-for-muse**
 
-### 第 2 步：让 Muse 在远端电脑上装好
+### Step 2: Ask Muse to install it on its remote computer
 
-跟 Muse 说：
+Tell Muse:
 
-> 在你的远端电脑上把 blender-for-muse 装好
+> Install blender-for-muse on your remote computer
 
-Muse 会自己下载 Blender 无头版、验证安装。你什么都不用管，装好它会告诉你。
+Muse downloads headless Blender and verifies the install itself.
+You do nothing; it tells you when it's done.
 
-### 第 3 步：说出你想要的模型
+### Step 3: Say what you want modeled
 
-直接说人话，语音、打字、发截图都行：
+Just use human language — voice, text, or a screenshot:
 
-> 给我画一个 M12 的螺帽
+> Draw me an M12 hex nut
 
-### 第 4 步：看图，提修改
+### Step 4: Look at the renders, ask for changes
 
-Muse 建好模型、渲染出图发你。哪里不满意，直接说：
+Muse builds the model and sends you renders. Don't like something? Just say:
 
-> 内径改大一点 / 换个视角看看 / 切一半看剖面 / 做个旋转动画
+> Make the inner diameter bigger / Show me another angle / Cut it in half / Make a turntable animation
 
-### 第 5 步：拿走模型
+### Step 5: Take the model
 
-满意了，Muse 会把 `.blend` 文件发你。本地装个 Blender（blender.org 免费下载），
-双击打开就能继续编辑。
+Happy with it? Muse sends you the `.blend` file.
+Open it in local Blender (free at blender.org) and keep editing.
 
-**全程你只动了嘴。** 这就是小白模式。🌱
-
-> **You only talked.** That's Beginner Mode. 🌱
+**You only talked.** That's Beginner Mode. 🌱
 
 ---
 
-## 🛠️ 手动模式：三步跑通第一个模型
+## 🛠️ Manual Mode: first model in three steps
 
-面向想自己动手的极客，或第一次用本项目的 AI agent。
+For hands-on geeks, or an AI agent using this project for the first time.
 
-### 前提 / Prerequisites
+### Prerequisites
 
-- Linux（Ubuntu 22.04/24.04 实测过；其他发行版大概率也行）
-- Python 3（系统自带即可）
-- 约 1GB 磁盘空间（Blender 安装包 ~400MB）
+- Linux (tested on Ubuntu 22.04/24.04; other distros will probably work)
+- Python 3 (system default is fine)
+- ~1GB disk space (Blender download is ~400MB)
 
-### 第一步：安装 / Step 1 — Install
+### Step 1 — Install
 
 ```bash
 git clone https://github.com/song-squared/blender-for-muse.git
@@ -62,49 +62,48 @@ cd blender-for-muse
 ./setup.sh
 ```
 
-`setup.sh` 会下载 Blender 4.5 LTS 并解压到 `~/tools/blender`，然后验证无头模式能跑。
-装完自检：
+`setup.sh` downloads Blender 4.5 LTS into `~/tools/blender` and verifies headless mode works.
+Self-check after install:
 
 ```bash
 ./setup.sh check
 ```
 
-> 想装到别处？`BLENDER_DIR=/opt/blender ./setup.sh`。
-> 想用别的版本？`BLENDER_VERSION=4.5.14 ./setup.sh`。
+> Install elsewhere? `BLENDER_DIR=/opt/blender ./setup.sh`.
+> Another version? `BLENDER_VERSION=4.5.14 ./setup.sh`.
 
-### 第二步：跑第一个模型 / Step 2 — Build your first model
+### Step 2 — Build your first model
 
 ```bash
-export BLENDER_BIN="$HOME/tools/blender/current/blender"   # 版本无关的稳定路径
+export BLENDER_BIN="$HOME/tools/blender/current/blender"   # version-independent stable path
 $BLENDER_BIN -b --python examples/nut.py -- hero
 ```
 
-这会按 GB/T 6170 标准生成一个 **M12 六角螺母**（对边 18mm、高 10.8mm、M12×1.75 内螺纹），
-渲染一张 800×600 的图：`examples/outputs/nut_M12_hero.png`，同时存下 `nut_M12.blend`。
+This builds a standard **M12 hex nut** (GB/T 6170: 18mm across flats,
+10.8mm height, M12×1.75 internal thread), renders an 800×600 image to
+`examples/outputs/nut_M12_hero.png`, and saves `nut_M12.blend`.
 
-This builds a standard **M12 hex nut** (GB/T 6170) and renders it. ~90 seconds on a 2-core CPU-only box.
+~90 seconds on a 2-core CPU-only box.
 
-### 第三步：换视角 / Step 3 — More views
+### Step 3 — More views
 
 ```bash
-$BLENDER_BIN -b --python examples/nut.py -- top_close   # 俯视特写看螺纹 / thread close-up
-$BLENDER_BIN -b --python examples/nut.py -- section     # 剖切看剖面 / cross-section
-$BLENDER_BIN -b --python examples/nut.py -- turntable   # 36 帧旋转动画 mp4 / turntable animation
+$BLENDER_BIN -b --python examples/nut.py -- top_close   # thread close-up
+$BLENDER_BIN -b --python examples/nut.py -- section     # cross-section
+$BLENDER_BIN -b --python examples/nut.py -- turntable   # 36-frame turntable animation mp4
 ```
 
-## 下一步 / Next
+## Next
 
-- 改参数：打开 `examples/nut.py`，顶部 `PARAMS` 字典里改数字就行（单位：毫米）。
-  All tunable dimensions live in the `PARAMS` dict at the top (millimeters).
-- 读 `SKILL.md`：完整的 agent 工作流——生成脚本 → 执行 → 报错重修 → 渲染自检 → 迭代。
-  Read `SKILL.md` for the full agent loop.
+- Tweak parameters: open `examples/nut.py`, edit the `PARAMS` dict at the top (millimeters).
+- Read `SKILL.md`: the full agent loop — generate script → execute → fix errors → render → self-check → iterate.
 
-## 大渲染：上 VPS / Big renders: move to a VPS
+## Big renders: move to a VPS
 
-远端机只够验证和小场景。要成品质量：租一台 Ubuntu VPS（多核 CPU 版或 GPU 版），
-把 SSH 连接信息（host、用户名、密钥）通过安全流程交给 Muse。
-Muse 在 VPS 上跑 `./setup.sh` 装好，把脚本传过去，
-改两行渲染配置（`s.cycles.device = 'GPU'`，采样调高），开渲，
-最后 `scp` 把结果拿回来。建模参数不用动。
+The remote box is for validation and small scenes. For production quality:
+rent an Ubuntu VPS (multi-core CPU or GPU), hand Muse the SSH credentials
+(host, user, key) through the secure flow. Muse runs `./setup.sh` on the VPS,
+copies the script over, flips two render settings (`s.cycles.device = 'GPU'`,
+higher samples), renders, and `scp`s the results back. Modeling params stay untouched.
 
-细则见 `SKILL.md` 第 8 节。Details in `SKILL.md` §8.
+Details in `SKILL.md` §8.

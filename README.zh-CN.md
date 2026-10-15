@@ -107,7 +107,7 @@ Muse 改参数化脚本，重新渲染，把新图发你。
 >
 > 就这样。😎
 
-**👨‍💻 极客版**：看 [QUICKSTART.md](QUICKSTART.md)，三步跑通第一个模型。
+**👨‍💻 极客版**：看 [QUICKSTART.zh-CN.md](QUICKSTART.zh-CN.md)，三步跑通第一个模型。
 
 ```bash
 git clone https://github.com/song-squared/blender-for-muse.git
@@ -124,7 +124,7 @@ cd blender-for-muse
 
 | 文件 | 说明 |
 |---|---|
-| `QUICKSTART.md` | 小白模式 + 三步快速开始 🚀 |
+| `QUICKSTART.zh-CN.md` | 小白模式 + 三步快速开始 🚀 |
 | `SKILL.md` | 完整工作流规范 📋 |
 | `setup.sh` | 一键安装：Blender 4.5 LTS 无头版 ⚙️ |
 | `examples/nut.py` | 参数化 M12 螺母：参考实现 🔩 |
