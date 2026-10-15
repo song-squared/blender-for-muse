@@ -43,6 +43,12 @@
 - 螺旋/扫掠几何自己用 bmesh 生成时，建完面检查法线朝向（参考 `examples/nut.py` 的 radial 检查 + `reverse_faces`）。
 - 布尔求交的两个物体如果有**共面**，把一方半径做大一点点（如 6.0 → 6.05）嵌入，避免 z-fighting。
 - 灯光能量是物理单位（瓦特）；场景整体缩放 k 倍时，灯光距离变 k 倍，能量要乘 k² 才保持亮度。
+- Blender 4.x 的 Principled BSDF 输入改名了：`Subsurface` → `Subsurface Weight`，
+  `Subsurface Color` 没了，对应的是 `Subsurface Radius`（而且它是 3 元向量不是 RGBA）。
+  别靠记忆猜输入名——拿不准就跑一段小脚本把 `bsdf.inputs` 的名字全打印出来再写。
+- 注意**物体级位移 vs 顶点级坐标**：如果 `obj.location` 把整个物体挪过，
+  后续新物体的位置要用**世界坐标**算，别用挪之前的局部坐标（苹果的果梗就这么被埋进果身里过）。
+  看不到物体时先查 `.blend` 里物体在不在、藏没藏，再查坐标。
 
 ## 3. 渲染配置模板（Cycles CPU）
 
